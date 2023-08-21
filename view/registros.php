@@ -72,7 +72,7 @@ $result = $conexao->query($sql);
                 <tr>
                     <th scope="col">PU</th>
                     <th scope="col">NOME</th>
-                    <th scope="col">HORA EXTRA</th>
+                    <th scope="col">SALDO</th>
                 </tr>
             </thead>
             <tbody>
