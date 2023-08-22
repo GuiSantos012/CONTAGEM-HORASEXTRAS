@@ -68,7 +68,7 @@ if (!empty($_GET['id'])) {
 
         <div class="form-group">
             <h6 for="horanegativo">Hora Negativo:</h6>
-            <input type="time" id="horanegativo" name="horanegativo" value="<?php echo $horasnegativo ?>" required>
+            <input type="time" id="horanegativo" name="horanegativo" value="<?php echo $horanegativo ?>" required>
         </div>
         <br>
         <input type="hidden" name="id" value="<?php echo $id ?>">
