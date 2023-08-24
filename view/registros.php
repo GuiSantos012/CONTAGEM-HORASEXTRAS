@@ -9,9 +9,14 @@ if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true
     header('Location: ../view/login.php');
 }
 
-
+if (!empty($_GET['search'])) {
+    $data = $_GET['search'];
+    $sql = "SELECT pu, nome, SUM(TIME_TO_SEC(hora_positivo)) AS total_positivas, SUM(TIME_TO_SEC(hora_negativo)) AS total_negativas FROM registros_dados WHERE pu LIKE '%$data%' OR nome LIKE '%$data%' GROUP BY nome";
+} else {
+    $sql = "SELECT pu, nome, SEC_TO_TIME(SUM(TIME_TO_SEC(hora_positivo)) - SUM(TIME_TO_SEC(hora_negativo))) AS saldo_total FROM registros_dados GROUP BY pu";
+}
 // Consulta para somar os valores das colunas horas_positivas e horas_negativas e recuperar pu e nome
-$sql = "SELECT pu, nome, SUM(TIME_TO_SEC(hora_positivo)) AS total_positivas, SUM(TIME_TO_SEC(hora_negativo)) AS total_negativas FROM registros_dados GROUP BY pu";
+
 $result = $conexao->query($sql);
 
 ?>
@@ -51,7 +56,14 @@ $result = $conexao->query($sql);
     </header>
     <br>
 
-
+    <div class="box-search">
+        <input type="search" class="form-control w-25 border border-dark" placeholder="Pesquisar" id="pesquisar">
+        <button onclick="searchdata()" class="btn btn-primary border border-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+        </button>
+    </div>
 
     <script src="../script/pesqregi.js"></script>
 
@@ -69,32 +81,23 @@ $result = $conexao->query($sql);
                 <?php
                 if ($result->num_rows > 0) {
                     while ($user_data = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
-                        echo "<td>" . $user_data["pu"] . "</td>";
-                        echo "<td>" . $user_data["nome"] . "</td>";
+                        $saldo_total = $user_data["saldo_total"];
 
-                        $saldo = $user_data["total_positivas"] - $user_data["total_negativas"];
+                        if ($saldo_total != "00:00:00") {
+                            echo "<tr>";
+                            echo "<td>" . $user_data["pu"] . "</td>";
+                            echo "<td>" . $user_data["nome"] . "</td>";
 
-                        echo "<td>";
-
-                        if ($saldo < 0) {
-                            echo "-";
+                            echo "<td>" . $saldo_total . "</td>";
+                            echo "<tr>";
                         }
-
-                        echo gmdate('H:i', abs($saldo)) . "</td>";
-                        echo "</tr>";
                     }
-                } else {
-                    echo "<td>" . $saldo . "</td>";
-                    echo "</tr>";
                 }
-
                 ?>
 
             </tbody>
         </table>
     </div>
-
 
 </body>
 

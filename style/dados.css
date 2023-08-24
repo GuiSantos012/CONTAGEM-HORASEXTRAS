@@ -80,7 +80,9 @@ form {
     color: var(--first-color);
 }
 
-input {
+/* Defina a largura do select para 300 pixels */
+input,
+select[name="pu"] {
     width: 300px;
 }
 

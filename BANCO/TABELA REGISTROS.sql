@@ -16,4 +16,4 @@ SELECT
     TIME_TO_SEC(SUM(hora_positivo)) - TIME_TO_SEC(SUM(hora_negativo))
 ) AS resultado
 FROM registros_dados
-group by pu;
+group by pu
