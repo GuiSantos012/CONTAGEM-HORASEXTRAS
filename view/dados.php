@@ -69,17 +69,20 @@ $sql_query_states = $conexao->query($sql_codes_states) or die($conexao->error)
 
         <h2>REGISTRAR EXTRAS</h2>
         <br>
-        <select <?php if (isset($_GET['pu'])) echo "Disabled"; ?> required name="pu">
+        <select <?php if (isset($_GET['pu'])) echo "Disabled"; ?> required name="pu" id="pu">
             <option value="">Selecione um PU</option>
             <?php while ($pu = $sql_query_states->fetch_assoc()) { ?>
                 <option <?php if (isset($_GET['pu']) && $_GET['pu'] == $pu['pu']) echo "Selected"; ?> value="<?php echo $pu['pu']; ?> "> <?php echo $pu['pu']; ?> </option>
             <?php } ?>
         </select>
         <br><br>
+
         <div class="form-group">
             <label for="nome"></label>
             <input type="text" id="nome" name="nome" placeholder="NOME" required>
         </div>
+
+        <script src="../script/preencher.js"></script>
 
         <div class="form-group">
             <h6 for="dataregistro">DATA:</h6>
