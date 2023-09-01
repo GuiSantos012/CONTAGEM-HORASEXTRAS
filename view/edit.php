@@ -17,6 +17,7 @@ if (!empty($_GET['id'])) {
             $dataregistro = $user_data['data_registro'];
             $horapositivo = $user_data['hora_positivo'];
             $horanegativo = $user_data['hora_negativo'];
+            $observacao = $user_data['observacao'];
         }
     } else {
         header('location: ../view/sistema.php');
@@ -44,7 +45,7 @@ if (!empty($_GET['id'])) {
 
         <a href="../view/sistema.php" class="link">Voltar</a>
 
-        <h2>ATUALIZAR EXTRAS</h2>
+        <h2>ATUALIZAR HORAS</h2>
         <br>
         <div class="form-group">
             <label for="pu"></label>
@@ -69,6 +70,11 @@ if (!empty($_GET['id'])) {
         <div class="form-group">
             <h6 for="horanegativo">Hora Negativo:</h6>
             <input type="time" id="horanegativo" name="horanegativo" value="<?php echo $horanegativo ?>" required>
+        </div>
+
+        <div class="form-group">
+            <h6 for="observacao">Observação:</h6>
+            <input type="text" id="observacao" name="observacao" value="<?php echo $observacao ?>">
         </div>
         <br>
         <input type="hidden" name="id" value="<?php echo $id ?>">

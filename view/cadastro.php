@@ -37,7 +37,7 @@ $result = $conexao->query($sqllista);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/cadastro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>REGISTROS</title>
+    <title>CADASTRO</title>
 </head>
 
 <body>
@@ -83,12 +83,10 @@ $result = $conexao->query($sqllista);
 
     </form>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 
     <div class="m-5">
 
-        <table class="table text-white table-bg">
+        <table class="table text-white table-">
             <thead>
                 <tr>
                     <th scope="col">PU</th>

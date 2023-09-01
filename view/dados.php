@@ -15,8 +15,9 @@ if (isset($_POST['submit'])) {
     $dataregistro = $_POST['dataregistro'];
     $horapositivo = $_POST['horapositivo'];
     $horanegativo = $_POST['horanegativo'];
+    $observacao = $_POST['observacao'];
 
-    $result = mysqli_query($conexao, "INSERT INTO registros_dados(pu, nome,data_registro, hora_positivo, hora_negativo) VALUES('$pu', '$nome','$dataregistro', '$horapositivo', '$horanegativo')");
+    $result = mysqli_query($conexao, "INSERT INTO registros_dados(pu, nome,data_registro, hora_positivo, hora_negativo, observacao) VALUES('$pu', '$nome','$dataregistro', '$horapositivo', '$horanegativo', '$observacao')");
 
     if ($result) {
         echo '<script>alert("Dados salvos com sucesso!");</script>';
@@ -63,11 +64,10 @@ $sql_query_states = $conexao->query($sql_codes_states) or die($conexao->error)
             </div>
         </nav>
     </header>
-    <br><br><br><br>
 
     <form action="dados.php" method="post">
 
-        <h2>REGISTRAR EXTRAS</h2>
+        <h2>REGISTRAR HORAS</h2>
         <br>
         <select <?php if (isset($_GET['pu'])) echo "Disabled"; ?> required name="pu" id="pu">
             <option value="">Selecione um PU</option>
@@ -97,6 +97,11 @@ $sql_query_states = $conexao->query($sql_codes_states) or die($conexao->error)
         <div class="form-group">
             <h6 for="horanegativo">Hora Negativo:</h6>
             <input type="time" id="horanegativo" name="horanegativo" required>
+        </div>
+
+        <div class="form-group">
+            <h6 for="observacao">Observação:</h6>
+            <input type="text" id="observacao" name="observacao">
         </div>
         <br>
         <input type="submit" name="submit" id="submit">
