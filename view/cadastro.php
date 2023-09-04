@@ -10,16 +10,24 @@ if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true
 }
 
 if (isset($_POST['submit'])) {
-
     $nome = $_POST['nome'];
     $pu = $_POST['pu'];
 
-    $sql = mysqli_query($conexao, "INSERT INTO funcionarios(nome, pu) VALUES('$nome', '$pu')");
+    // Consulta SQL para verificar se o PU já existe no banco de dados
+    $sql_check = "SELECT * FROM funcionarios WHERE pu = '$pu'";
+    $result_check = $conexao->query($sql_check);
 
-    if ($sql) {
-        echo '<script>alert("Dados salvos com sucesso!");</script>';
+    if ($result_check->num_rows > 0) {
+        // O PU já existe no banco de dados, exiba uma mensagem de erro
+        echo '<script>alert("PU já cadastrado. Por favor, escolha outro PU.");</script>';
     } else {
-        echo '<script>alert("Erro ao salvar os dados!");</script>';
+        // O PU não existe no banco de dados, insira os dados
+        $sql_insert = "INSERT INTO funcionarios(nome, pu) VALUES('$nome', '$pu')";
+        if ($conexao->query($sql_insert) === TRUE) {
+            echo '<script>alert("Dados salvos com sucesso!");</script>';
+        } else {
+            echo '<script>alert("Erro ao salvar os dados!");</script>';
+        }
     }
 }
 
