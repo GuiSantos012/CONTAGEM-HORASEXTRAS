@@ -110,7 +110,7 @@ $result = $conexao->query($sqllista);
                     echo "<td>" . $user_data["pu"] . "</td>";
                     echo "<td>" . $user_data["nome"] . "</td>";
                     echo "<td>
-                    <a class = 'btn btn-sm btn-danger border border-dark' href = '../manager/deletecad.php?id=$user_data[id]'> 
+                    <a class = 'btn btn-sm btn-danger border border-dark' href=\"javascript:confirmarDelecao({$user_data['id']});\"> 
                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
                             <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z'/>
                             <path d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z'/>
@@ -121,6 +121,22 @@ $result = $conexao->query($sqllista);
                     </td>";
                 }
                 ?>
+
+                <script>
+                    function confirmarDelecao(userId) {
+                        // Exibir uma caixa de diálogo de confirmação
+                        var confirmacao = window.confirm("Tem certeza de que deseja deletar esta pessoa?");
+
+                        // Verificar a resposta do usuário
+                        if (confirmacao) {
+                            // Se o usuário confirmar, redirecione para a página de exclusão com o ID do usuário
+                            window.location.href = "../manager/deletecad.php?id=" + userId;
+                        } else {
+                            // Se o usuário cancelar, não faça nada
+                        }
+                    }
+                </script>
+
 
             </tbody>
         </table>

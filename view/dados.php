@@ -17,9 +17,11 @@ if (isset($_POST['submit'])) {
     $horanegativo = $_POST['horanegativo'];
     $observacao = $_POST['observacao'];
 
-    $result = mysqli_query($conexao, "INSERT INTO registros_dados(pu, nome,data_registro, hora_positivo, hora_negativo, observacao) VALUES('$pu', '$nome','$dataregistro', '$horapositivo', '$horanegativo', '$observacao')");
+    // Usando declaração preparada para inserir dados seguramente
+    $stmt = $conexao->prepare("INSERT INTO registros_dados (pu, nome, data_registro, hora_positivo, hora_negativo, observacao) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $pu, $nome, $dataregistro, $horapositivo, $horanegativo, $observacao);
 
-    if ($result) {
+    if ($stmt->execute()) {
         echo '<script>alert("Dados salvos com sucesso!");</script>';
     } else {
         echo '<script>alert("Erro ao salvar os dados!");</script>';
