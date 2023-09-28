@@ -49,15 +49,15 @@ $sql_query_states = $conexao->query($sql_codes_states) or die($conexao->error)
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <h1>SISTEMA</h1>
+                <h1>REGISTRAR</h1>
             </div>
 
             <div class="nav-list">
                 <ul>
                     <li class="nav-item"><a href="../view/cadastro.php" class="nav-link">CADASTRO</a></li>
-                    <li class="nav-item"><a href="../view/dados.php" class="nav-link">DADOS</a></li>
+                    <li class="nav-item"><a href="../view/dados.php" class="nav-link">REGISTRAR</a></li>
                     <li class="nav-item"><a href="../view/sistema.php" class="nav-link">SISTEMA</a></li>
-                    <li class="nav-item"><a href="../view/registros.php" class="nav-link">REGISTRO</a></li>
+                    <li class="nav-item"><a href="../view/registros.php" class="nav-link">DADOS</a></li>
                 </ul>
             </div>
 
