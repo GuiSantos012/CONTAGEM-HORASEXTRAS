@@ -44,7 +44,7 @@ $result = $conexao->query($sql);
 
             <div class="nav-list">
                 <ul>
-                    <li class="nav-item"><a href="../view/cadastro.php" class="nav-link">CADASTROo</a></li>
+                    <li class="nav-item"><a href="../view/cadastro.php" class="nav-link">CADASTRO</a></li>
                     <li class="nav-item"><a href="../view/dados.php" class="nav-link">REGISTRAR</a></li>
                     <li class="nav-item"><a href="../view/sistema.php" class="nav-link">SISTEMA</a></li>
                     <li class="nav-item"><a href="../view/registros.php" class="nav-link">DADOS</a></li>
