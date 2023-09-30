@@ -39,7 +39,7 @@ $result = $conexao->query($sql);
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <h1>SISTEMA</h1>
+                <h1>BH</h1>
             </div>
 
             <div class="nav-list">

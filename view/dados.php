@@ -49,7 +49,7 @@ $sql_query_states = $conexao->query($sql_codes_states) or die($conexao->error)
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <h1>REGISTRAR</h1>
+                <h1>BH</h1>
             </div>
 
             <div class="nav-list">
